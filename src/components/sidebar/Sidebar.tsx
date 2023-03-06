@@ -22,7 +22,7 @@ const Sidebar: React.FC<SideBarProps> = ({ isOpen, onClose }) => {
         <DrawerCloseButton />
         <DrawerHeader fontSize={24}>FoozBall Menu</DrawerHeader>
         <DrawerBody>
-          <MainMenu />
+          <MainMenu onClick={onClose} />
         </DrawerBody>
       </DrawerContent>
     </Drawer>

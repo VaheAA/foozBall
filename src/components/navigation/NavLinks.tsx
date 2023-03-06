@@ -1,4 +1,4 @@
-import { Box, Wrap, WrapItem, Button, IconButton } from '@chakra-ui/react';
+import { Box, Wrap, WrapItem, Button } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 
 const NavLinks = () => {

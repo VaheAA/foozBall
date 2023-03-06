@@ -9,10 +9,15 @@ import { GiTrophyCup } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 
-const MainMenu: React.FC = () => {
+interface MainMenuProps {
+  onClick: () => void;
+}
+
+
+const MainMenu: React.FC<MainMenuProps> = ({ onClick }) => {
   return (
     <Menu matchWidth>
-      <Link to="/countries">
+      <Link onClick={onClick} to="/countries">
         <MenuItem py={5} px={2} fontSize={20} display="flex" alignItems="center" gap={4}>
           <Icon as={FcGlobe} alignSelf="center" />
           <Text>
@@ -20,7 +25,7 @@ const MainMenu: React.FC = () => {
           </Text>
         </MenuItem>
       </Link>
-      <Link to="/international">
+      <Link onClick={onClick} to="/international">
         <MenuItem py={5} px={2} fontSize={20} display="flex" alignItems="center" gap={4}>
           <Icon as={GiTrophyCup} alignSelf="center" />
           <Text>
