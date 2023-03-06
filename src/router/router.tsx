@@ -1,10 +1,10 @@
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
+
 import Countries from '../pages/countries/Countries';
 import Home from '../pages/home/Home';
 import International from '../pages/international/International';
 import Leagues from '../pages/leagues/Leagues';
-
 
 
 const router = createBrowserRouter(

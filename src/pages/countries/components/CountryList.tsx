@@ -9,7 +9,7 @@ type CountryListProps = {
 const CountryList: React.FC<CountryListProps> = ({ data }) => {
 
 
-  const renderCountries = data?.map(country => <CountryCard key={country.code} name={country.name} flag={country.flag} code={country.code} />);
+  const renderCountries = data?.map((country, index) => <CountryCard key={country.code + index} name={country.name} flag={country.flag} code={country.code} />);
 
   return (
     <SimpleGrid columns={5} spacing={10}>

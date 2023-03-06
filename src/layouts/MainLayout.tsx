@@ -18,7 +18,7 @@ const MainLayout: React.FC = () => {
   return (
     <>
       <MainHeader toggleSidebar={handleOpen} />
-      <Box as="main">
+      <Box as="main" pt={28}>
         <Container maxW="1300px" mx="auto">
           <Outlet />
         </Container>

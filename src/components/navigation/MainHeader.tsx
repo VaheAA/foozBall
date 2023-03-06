@@ -11,7 +11,7 @@ interface HeaderProps {
 
 const MainHeader: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   return (
-    <Box as="header" py={4}>
+    <Box as="header" py={4} shadow="md" position="fixed" left={0} right={0} top={0} zIndex={999} bgColor="chakra-subtle-bg">
       <Container maxW="1300px" mx="auto">
         <Flex justifyContent="space-between" alignItems="center">
           <Link to="/">
