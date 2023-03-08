@@ -14,7 +14,7 @@ const Leagues: React.FC = () => {
 
   return (
     <Box>
-      <Heading>{data![0].country.name} leagues</Heading>
+      <Heading>{data![0].country.name}</Heading>
       <LeagueList />
     </Box>
   );

@@ -2,8 +2,12 @@ import { useFetchAllCountriesQuery } from '../../services/countryApi/countriesSe
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import CountryList from './components/CountryList';
 import { Box, Heading } from '@chakra-ui/react';
+import SearchInput from '../../components/fields/SearchInput';
+import React, { useState } from 'react';
+import { ICountry } from '../../types/country';
 
 const Countries: React.FC = () => {
+  const [filteredCountries, setFilteredCountries] = useState<ICountry[] | undefined>([]);
 
   const { data, isLoading } = useFetchAllCountriesQuery();
 
@@ -11,10 +15,15 @@ const Countries: React.FC = () => {
     return <LoadingSpinner />;
   }
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilteredCountries(data?.filter(country => country.name.toLowerCase().includes(e.target.value.toLowerCase())));
+  };
+
   return (
     <Box display="flex" flexDirection="column" gap={12}>
       <Heading>Browse countries</Heading>
-      <CountryList data={data} />
+      <SearchInput onChange={handleSearchChange} label='Search countries' id="country-search" />
+      <CountryList data={filteredCountries!.length > 0 ? filteredCountries : data} />
     </Box>
   );
 };

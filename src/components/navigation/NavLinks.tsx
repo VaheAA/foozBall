@@ -1,22 +1,27 @@
 import { Box, Wrap, WrapItem, Button } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const NavLinks = () => {
+
+  const { isLoggedIn } = useTypedSelector(state => state.auth);
+
   return (
-    <Box as="nav">
+    <Box as="nav" ml="auto" mr={8}>
       <Wrap spacing={4}>
-        <WrapItem alignItems="center">
+        {!isLoggedIn && <WrapItem alignItems="center">
           <NavLink to="/login">Login</NavLink>
-        </WrapItem>
-        <WrapItem alignItems="center">
-          <NavLink to="/login">Register</NavLink>
-        </WrapItem>
-        <WrapItem alignItems="center">
-          <Button colorScheme="orange">Logout</Button>
-        </WrapItem>
-        <WrapItem alignItems="center">
-          <NavLink to="/login">Profile</NavLink>
-        </WrapItem>
+        </WrapItem>}
+        {!isLoggedIn && <WrapItem alignItems="center">
+          <NavLink to="/register">Register</NavLink>
+        </WrapItem>}
+        {isLoggedIn
+          && <WrapItem alignItems="center">
+            <Button colorScheme="orange">Logout</Button>
+          </WrapItem>}
+        {isLoggedIn && <WrapItem alignItems="center">
+          <NavLink to="/profile">Profile</NavLink>
+        </WrapItem>}
       </Wrap>
     </Box>
   );

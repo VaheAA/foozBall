@@ -9,6 +9,9 @@ import { setupStore } from './store/store';
 
 const store = setupStore();
 
+
+
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ChakraProvider>
     <Provider store={store}>
