@@ -1,8 +1,11 @@
 import React from 'react';
+import CustomContainer from '../../components/shared/CustomContainer';
 
 const International: React.FC = () => {
   return (
-    <div>International</div>
+    <CustomContainer>
+      <h1>International</h1>
+    </CustomContainer>
   );
 };
 

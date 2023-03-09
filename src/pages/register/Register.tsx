@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
+import AuthContainier from '../../components/shared/AuthContainier';
 
 const Register: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -57,7 +58,7 @@ const Register: React.FC = () => {
 
 
   return (
-    <Box maxWidth="50%" mx="auto">
+    <AuthContainier>
       <Heading variant="h1" textAlign="center">Create new account and dive into the world of FoozBall!</Heading>
       <Box px={4} py={3} mt={8} boxShadow="md" rounded="md">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -77,7 +78,7 @@ const Register: React.FC = () => {
           </RouterLink>
         </Stack>
       </Box>
-    </Box>
+    </AuthContainier>
   );
 };
 

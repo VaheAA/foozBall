@@ -5,6 +5,7 @@ import { Box, Heading } from '@chakra-ui/react';
 import SearchInput from '../../components/fields/SearchInput';
 import React, { useState } from 'react';
 import { ICountry } from '../../types/country';
+import CustomContainer from '../../components/shared/CustomContainer';
 
 const Countries: React.FC = () => {
   const [filteredCountries, setFilteredCountries] = useState<ICountry[] | undefined>([]);
@@ -20,11 +21,13 @@ const Countries: React.FC = () => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" gap={12}>
-      <Heading>Browse countries</Heading>
-      <SearchInput onChange={handleSearchChange} label='Search countries' id="country-search" />
-      <CountryList data={filteredCountries!.length > 0 ? filteredCountries : data} />
-    </Box>
+    <CustomContainer>
+      <Box display="flex" flexDirection="column" gap={12}>
+        <Heading>Browse countries</Heading>
+        <SearchInput onChange={handleSearchChange} label='Search countries' id="country-search" />
+        <CountryList data={filteredCountries!.length > 0 ? filteredCountries : data} />
+      </Box>
+    </CustomContainer>
   );
 };
 

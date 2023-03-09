@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { setCredentials } from '../../store/reducers/auth/authSlice';
 import { useAppDispatch } from '../../hooks/useTypedSelector';
 import { IUser } from '../../types/user';
+import AuthContainier from '../../components/shared/AuthContainier';
 
 
 const Login: React.FC = () => {
@@ -63,7 +64,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <Box maxWidth="50%" mx="auto">
+    <AuthContainier>
       <Heading variant="h1" textAlign="center">Login and continue exploring FoozBall!</Heading>
       <Box px={4} py={3} mt={8} boxShadow="md" rounded="md">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,7 +81,7 @@ const Login: React.FC = () => {
           </Link>
         </Stack>
       </Box>
-    </Box>
+    </AuthContainier>
   );
 };
 

@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Box, Container } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import MainHeader from '../components/navigation/MainHeader';
 import Sidebar from '../components/sidebar/Sidebar';
-import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useAppDispatch } from '../hooks/useTypedSelector';
 import { setCredentials } from '../store/reducers/auth/authSlice';
 import { useAuth } from '../hooks/useAuth';
@@ -28,10 +27,8 @@ const MainLayout: React.FC = () => {
   return (
     <>
       <MainHeader toggleSidebar={handleOpen} />
-      <Box as="main" pt={28}>
-        <Container maxW="1300px" mx="auto">
-          <Outlet />
-        </Container>
+      <Box as="main" pt="86px">
+        <Outlet />
       </Box>
       <Sidebar isOpen={isOpen} onClose={handleClose} />
     </>
