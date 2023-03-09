@@ -11,12 +11,13 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setCredentials: (state, { payload: { data } }) => {
-      state.user = data;
+    setCredentials: (state, action) => {
+      state.user = action.payload;
       state.isLoggedIn = true;
     },
     logout: state => {
-      state.user = initialState.user;
+      state.user = null;
+      state.isLoggedIn = false;
     }
   }
 });

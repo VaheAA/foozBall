@@ -10,6 +10,7 @@ import { auth } from '../../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 import { setCredentials } from '../../store/reducers/auth/authSlice';
 import { useAppDispatch } from '../../hooks/useTypedSelector';
+import { IUser } from '../../types/user';
 
 
 const Login: React.FC = () => {
@@ -27,7 +28,13 @@ const Login: React.FC = () => {
     try {
       setLoading(true);
       const res = await signInWithEmailAndPassword(auth, values.email, values.password);
-      dispatch(setCredentials(res.user));
+      const userData: IUser = {
+        id: res.user.uid,
+        username: res.user.displayName,
+        email: res.user.email
+      };
+      console.log(userData);
+      dispatch(setCredentials(userData));
       setLoading(false);
       reset();
       toast({
@@ -68,11 +75,9 @@ const Login: React.FC = () => {
         </form>
         <Stack direction="row" spacing={2} alignItems="center" fontSize="18" mt={4}>
           <Text >Still don't have an account? </Text>
-          <RouterLink to="/register">
-            <Link color="orange.600">
-              Create now!
-            </Link>
-          </RouterLink>
+          <Link color="orange.700" to="/register" as={RouterLink}>
+            Create now!
+          </Link>
         </Stack>
       </Box>
     </Box>

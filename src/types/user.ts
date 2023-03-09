@@ -1,7 +1,7 @@
 export interface IUser {
-  id: string;
-  username: string;
-  email: string;
+  id: string | null;
+  username: string | null;
+  email: string | null;
 }
 
 export interface IUserState {
