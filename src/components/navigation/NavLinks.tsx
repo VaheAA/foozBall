@@ -1,4 +1,4 @@
-import { Box, Wrap, WrapItem, Button } from '@chakra-ui/react';
+import { Box, Wrap, WrapItem, Button, Link } from '@chakra-ui/react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useTypedSelector } from '../../hooks/useTypedSelector';
 useAppDispatch;
@@ -35,13 +35,13 @@ const NavLinks = () => {
     <Box as="nav" ml="auto" mr={8}>
       <Wrap spacing={4}>
         {!isLoggedIn && <WrapItem alignItems="center">
-          <NavLink to="/login">Login</NavLink>
+          <Link fontSize={20} fontWeight={500} _activeLink={{ color: 'orange.600' }} as={NavLink} to="/login">Login</Link>
         </WrapItem>}
         {!isLoggedIn && <WrapItem alignItems="center">
-          <NavLink to="/register">Register</NavLink>
+          <Link fontSize={20} fontWeight={500} _activeLink={{ color: 'orange.600' }} as={NavLink} to="/register">Register</Link>
         </WrapItem>}
         {isLoggedIn && <WrapItem alignItems="center">
-          <NavLink to="/profile">Profile</NavLink>
+          <Link fontSize={20} fontWeight={500} _activeLink={{ color: 'orange.600' }} as={NavLink} to="/profile">Profile</Link>
         </WrapItem>}
         {isLoggedIn
           && <WrapItem alignItems="center">
