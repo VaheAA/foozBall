@@ -13,10 +13,11 @@ const Leagues: React.FC = () => {
 
   if (isLoading) return <LoadingSpinner />;
 
+
   return (
     <CustomContainer>
-      <Heading>{data![0].country.name}</Heading>
-      <LeagueList />
+      <Heading>Football Leagues of {data![0].country.name}</Heading>
+      <LeagueList data={data} />
     </CustomContainer>
   );
 };

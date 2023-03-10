@@ -13,12 +13,12 @@ const Home: React.FC = () => {
     <Box>
       <MainBanner title="Welcome to Foozball!" subtitle="Start your adventure in the world of football now!" button="Explore countries" href="/countries" />
       <CustomContainer>
-        <Stack pt={4} direction="column">
+        <Stack pt={4} direction="column" height="100%">
           <Heading as="h2" my={4} textAlign="center">Explore FoozBall!</Heading>
           <Grid
-            templateRows='repeat(2, 1fr)'
             templateColumns='repeat(6, 1fr)'
-            gap={4}>
+            gap={4}
+          >
             <GridItem colSpan={6} bg="blackAlpha.300" height="400px" borderRadius="10px" transition="all 0.3s ease" _hover={{ bg: 'blackAlpha.500' }}>
               <Link as={RouterLink} height="100%" to='/international' position="relative" display="block">
                 <Image src={clImage} height="100%" width="100%" objectFit="cover" position="relative" zIndex="-1" borderRadius="10px" />

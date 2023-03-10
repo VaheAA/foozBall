@@ -1,6 +1,6 @@
 import { ICountry } from './country';
 
-interface ILeague {
+export interface ILeague {
   id: number;
   name: string;
   type: string;

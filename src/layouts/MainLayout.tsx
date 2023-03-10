@@ -6,6 +6,7 @@ import Sidebar from '../components/sidebar/Sidebar';
 import { useAppDispatch } from '../hooks/useTypedSelector';
 import { setCredentials } from '../store/reducers/auth/authSlice';
 import { useAuth } from '../hooks/useAuth';
+import Footer from '../components/shared/Footer';
 
 const MainLayout: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -27,9 +28,10 @@ const MainLayout: React.FC = () => {
   return (
     <>
       <MainHeader toggleSidebar={handleOpen} />
-      <Box as="main" pt="86px">
+      <Box as="main" pt="86px" pb={12}>
         <Outlet />
       </Box>
+      <Footer />
       <Sidebar isOpen={isOpen} onClose={handleClose} />
     </>
   );

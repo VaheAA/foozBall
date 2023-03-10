@@ -1,6 +1,6 @@
 import CountryCard from './CountryCard';
 import { ICountry } from '../../../types/country';
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 
 type CountryListProps = {
   data: ICountry[] | undefined;
