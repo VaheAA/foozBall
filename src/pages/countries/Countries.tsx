@@ -6,6 +6,7 @@ import SearchInput from '../../components/fields/SearchInput';
 import React, { useState } from 'react';
 import { ICountry } from '../../types/country';
 import CustomContainer from '../../components/shared/CustomContainer';
+import MainBanner from '../../components/shared/MainBanner';
 
 const Countries: React.FC = () => {
   const [filteredCountries, setFilteredCountries] = useState<ICountry[] | undefined>([]);
@@ -21,13 +22,15 @@ const Countries: React.FC = () => {
   };
 
   return (
-    <CustomContainer>
-      <Box display="flex" flexDirection="column" gap={12} pt={20}>
-        <Heading>Browse countries</Heading>
-        <SearchInput onChange={handleSearchChange} label='Search countries' id="country-search" />
-        <CountryList data={filteredCountries!.length > 0 ? filteredCountries : data} />
-      </Box>
-    </CustomContainer>
+    <Box>
+      <MainBanner title="Welcome to Foozball!" subtitle="Start your adventure in the world of football now!" button="Browse countries" href="/countries" />
+      <CustomContainer>
+        <Box display="flex" flexDirection="column" gap={12} pt={20}>
+          <SearchInput onChange={handleSearchChange} label='Search countries' id="country-search" />
+          <CountryList data={filteredCountries!.length > 0 ? filteredCountries : data} />
+        </Box>
+      </CustomContainer>
+    </Box>
   );
 };
 

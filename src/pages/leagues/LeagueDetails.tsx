@@ -24,13 +24,18 @@ const LeagueDetails: React.FC = () => {
 
   const { data, isLoading } = useFetchLeagueStatsQuery({ season: 2020, league: +id! });
 
+  console.log(data);
+
   if (isLoading) return <LoadingSpinner />;
 
 
   return (
     <CustomContainer>
       <Box display="flex" flexDirection="column" gap={12} pt={20}>
-        <Heading>{data?.league.country} - {data?.league.name}</Heading>
+        <Box display="flex" alignItems="center" gap={10}>
+          <Image boxSize="120px" src={data?.league.flag} />
+          <Heading>Football Leagues of {data?.league.country} - {data?.league.name}</Heading>
+        </Box>
         <TableContainer>
           <Table variant='simple'>
             <TableCaption>League statistics of {data?.league.country} - {data?.league.name}</TableCaption>
