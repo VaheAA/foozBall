@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 import router from './router/router';
 import { Provider } from 'react-redux';
 import { setupStore } from './store/store';
+import './assets/css/index.css';
 
 
 const store = setupStore();

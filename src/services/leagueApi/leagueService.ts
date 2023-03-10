@@ -1,6 +1,12 @@
 import { baseApi } from '../baseApi';
 import { IApiResponse } from '../../types/general';
-import { ILeagueResponse } from '../../types/league';
+import { ILeagueResponse, ILeagueStandingsResponse } from '../../types/league';
+
+
+interface LeagueStandingParams {
+  season: number;
+  league: number;
+}
 
 
 export const leagueApi = baseApi.injectEndpoints({
@@ -15,9 +21,32 @@ export const leagueApi = baseApi.injectEndpoints({
       transformResponse: (response: IApiResponse) => {
         return response.response;
       }
+    }),
+    fetchLeagueById: build.query<ILeagueResponse[], number>({
+      query: (id) => ({
+        url: '/leagues',
+        params: {
+          id: id
+        }
+      }),
+      transformResponse: (response: IApiResponse) => {
+        return response.response[0];
+      }
+    }),
+    fetchLeagueStats: build.query<ILeagueStandingsResponse, LeagueStandingParams>({
+      query: (params) => ({
+        url: '/standings',
+        params: {
+          season: params.season,
+          league: params.league
+        }
+      }),
+      transformResponse: (response: IApiResponse) => {
+        return response.response[0];
+      }
     })
   })
 });
 
 
-export const { useFetchLeaguesQuery } = leagueApi;
+export const { useFetchLeaguesQuery, useFetchLeagueByIdQuery, useFetchLeagueStatsQuery } = leagueApi;

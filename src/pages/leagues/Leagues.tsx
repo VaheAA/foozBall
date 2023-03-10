@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFetchLeaguesQuery } from '../../services/leagueApi/leagueService';
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
@@ -16,8 +15,10 @@ const Leagues: React.FC = () => {
 
   return (
     <CustomContainer>
-      <Heading>Football Leagues of {data![0].country.name}</Heading>
-      <LeagueList data={data} />
+      <Box display="flex" flexDirection="column" gap={12} pt={20}>
+        <Heading>Football Leagues of {data![0].country.name}</Heading>
+        <LeagueList data={data} />
+      </Box>
     </CustomContainer>
   );
 };

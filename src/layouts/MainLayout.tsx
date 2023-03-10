@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import MainHeader from '../components/navigation/MainHeader';
 import Sidebar from '../components/sidebar/Sidebar';
 import { useAppDispatch } from '../hooks/useTypedSelector';
@@ -26,14 +26,14 @@ const MainLayout: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Flex direction="column" height="100%">
       <MainHeader toggleSidebar={handleOpen} />
-      <Box as="main" pt="86px" pb={12}>
+      <Box as="main" pt="86px" pb={12} flexGrow={1}>
         <Outlet />
       </Box>
       <Footer />
       <Sidebar isOpen={isOpen} onClose={handleClose} />
-    </>
+    </Flex>
   );
 };
 

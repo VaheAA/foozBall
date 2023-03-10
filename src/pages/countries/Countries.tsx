@@ -22,7 +22,7 @@ const Countries: React.FC = () => {
 
   return (
     <CustomContainer>
-      <Box display="flex" flexDirection="column" gap={12}>
+      <Box display="flex" flexDirection="column" gap={12} pt={20}>
         <Heading>Browse countries</Heading>
         <SearchInput onChange={handleSearchChange} label='Search countries' id="country-search" />
         <CountryList data={filteredCountries!.length > 0 ? filteredCountries : data} />
