@@ -18,6 +18,7 @@ import {
 import { useFetchLeagueStatsQuery } from '../../services/leagueApi/leagueService';
 import CustomContainer from '../../components/shared/CustomContainer';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
+import BackButton from '../../components/ui/BackButton';
 
 const LeagueDetails: React.FC = () => {
   const { id } = useParams();
@@ -32,25 +33,28 @@ const LeagueDetails: React.FC = () => {
   return (
     <CustomContainer>
       <Box display="flex" flexDirection="column" gap={12} pt={20}>
-        <Box display="flex" alignItems="center" gap={10}>
-          <Image boxSize="120px" src={data?.league.flag} />
-          <Heading>Football Leagues of {data?.league.country} - {data?.league.name}</Heading>
-        </Box>
+        <Stack direction="column">
+          <BackButton />
+          <Box display="flex" alignItems="center" justifyContent="center" gap={10}>
+            <Image boxSize="120px" src={data?.league.flag} />
+            <Heading>{data?.league.country} - {data?.league.name}</Heading>
+          </Box>
+        </Stack>
         <TableContainer>
-          <Table variant='simple'>
+          <Table variant='striped' colorScheme="orange">
             <TableCaption>League statistics of {data?.league.country} - {data?.league.name}</TableCaption>
             <Thead>
               <Tr>
                 <Th>Position</Th>
                 <Th>Club</Th>
                 <Th>Form</Th>
-                <Th>Matches</Th>
-                <Th>Win</Th>
-                <Th>Draw</Th>
-                <Th>Lose</Th>
-                <Th>Goals For</Th>
-                <Th>Goals Against</Th>
-                <Th isNumeric>Goal Difference</Th>
+                <Th>P</Th>
+                <Th>W</Th>
+                <Th>D</Th>
+                <Th>L</Th>
+                <Th>GF</Th>
+                <Th>GA</Th>
+                <Th isNumeric>GD</Th>
                 <Th isNumeric>Points</Th>
                 <Th>Status</Th>
               </Tr>
@@ -70,7 +74,7 @@ const LeagueDetails: React.FC = () => {
                   <Td isNumeric>{standing.all.goals.for}</Td>
                   <Td isNumeric>{standing.all.goals.against}</Td>
                   <Td isNumeric>{standing.all.lose}</Td>
-                  <Td isNumeric>{standing.goalsDiff}</Td>
+                  <Td isNumeric color={standing.goalsDiff < 0 ? 'red' : 'green'} >{standing.goalsDiff}</Td>
                   <Td isNumeric>{standing.points}</Td>
                   <Td>{standing.description}</Td>
                 </Tr>

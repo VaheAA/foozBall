@@ -10,9 +10,10 @@ type LeagueListProps = {
 
 const LeagueList: React.FC<LeagueListProps> = ({ data }) => {
 
-  const renderLeagues = data?.map((item, index) => <LeagueCard type={item.league.type} key={item.league.id} name={item.league.name} logo={item.league.logo} id={item.league.id} />);
+  const filteredLeagues = data?.filter((item, index) => item.league.type === 'League');
 
-  console.log(data);
+  const renderLeagues = filteredLeagues?.map((item, index) => <LeagueCard type={item.league.type} key={item.league.id} name={item.league.name} logo={item.league.logo} id={item.league.id} />);
+
 
   return (
     <Stack direction="column" spacing={10}>
